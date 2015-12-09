@@ -8,6 +8,12 @@ module ThemesOnRails
       end
     end
 
+    initializer 'themes_on_rails.action_mailer' do |app|
+      ActiveSupport.on_load :action_mailer do
+        include ThemesOnRails::MailerAdditions
+      end
+    end
+
     initializer 'themes_on_rails.load_locales' do |app|
       app.config.i18n.load_path += Dir[Rails.root.join('app/themes/*', 'locales', '**', '*.yml').to_s]
     end
