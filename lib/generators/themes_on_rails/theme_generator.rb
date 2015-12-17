@@ -7,6 +7,7 @@ module ThemesOnRails
 
      def create_theme_directory
         empty_directory theme_views_layout
+        empty_directory theme_views_dashboard
         empty_directory theme_images_directory
         empty_directory theme_javascripts_directory
         empty_directory theme_stylesheets_directory
@@ -28,6 +29,7 @@ module ThemesOnRails
           template "layout.html.haml", "#{theme_views_layout}/#{theme_name}.html.haml"
         else
           template "layout.html.erb", "#{theme_views_layout}/#{theme_name}.html.erb"
+          template "index.html.erb", "#{theme_views_dashboard}/index.html.erb"
         end
       end
 
@@ -39,6 +41,10 @@ module ThemesOnRails
 
         def theme_views_layout
           "#{theme_directory}/views/layouts"
+        end
+
+        def theme_views_dashboard
+          "#{theme_directory}/views/dashboard"
         end
 
         def theme_images_directory
